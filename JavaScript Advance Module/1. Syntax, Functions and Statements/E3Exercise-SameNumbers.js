@@ -1,6 +1,6 @@
 function sameNumbersCheck(number) {
 
-    let string = String(number).split('');
+    let string = String(number);
     let isSameNumber = true;
 
     let previousDigit = string[0];
@@ -19,4 +19,4 @@ function sameNumbersCheck(number) {
 
 }
 
-sameNumbersCheck(1234);
+sameNumbersCheck(222222);
