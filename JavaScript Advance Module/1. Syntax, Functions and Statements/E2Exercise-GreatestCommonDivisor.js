@@ -8,6 +8,8 @@ function getGreatestCommonDivisor(x, y) {
         x = t;
     }
     return x;
+
+
 }
 
 

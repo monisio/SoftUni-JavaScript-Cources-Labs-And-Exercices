@@ -1,4 +1,4 @@
-function stringLenght(a, b, c) {
+function stringLength(a, b, c) {
 
     let sum = a.length + b.length + c.length;
     let sumAverage = sum / 3;
@@ -9,4 +9,4 @@ function stringLenght(a, b, c) {
 }
 
 
-stringLenght('chocolate', 'ice cream', 'cake');
+stringLength('chocolate', 'ice cream', 'cake');

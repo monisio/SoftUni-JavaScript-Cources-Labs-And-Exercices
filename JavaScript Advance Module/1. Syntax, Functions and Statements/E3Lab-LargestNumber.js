@@ -8,8 +8,11 @@ function findLargestNumber(a, b, c) {
     //     console.log(c);
     // }
 
-     console.log(`The largest number is ${Math.max(a,b,c)}.`)
+    console.log(`The largest number is ${Math.max(a, b, c)}.`)
+
 
 }
+
+S
 
 findLargestNumber(-3, -5, -22.5);
