@@ -6,7 +6,7 @@ function test(){
     arr.sort((a,b)=> a-b);
     console.log(arr.join(" "));
     arr.sort((a,b)=> b-a);
-    arr.
+    
     console.log(arr.join(" "));
 
 }
