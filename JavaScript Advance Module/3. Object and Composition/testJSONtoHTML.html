@@ -21,7 +21,7 @@
 </div>
 <script>
 
-        //Write your code here
+
         function fromJSONToHTMLTable(json) {
             let arr = JSON.parse(json);
             let outputArr = ["<table>"];
@@ -34,7 +34,7 @@
                 let resultHtml = "";
                 resultHtml+= "<tr>";
                 for (let i = 0; i < keyValues.length; i++) {
-                    resultHtml+=`<th>${keyValues[i]}</th>`;
+                    resultHtml+=`<th>${escapeHtml( keyValues[i].toString())}</th>`;
                 }
                 resultHtml+= "</tr>";
                 return resultHtml;
