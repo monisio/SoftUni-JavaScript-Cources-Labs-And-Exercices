@@ -2,6 +2,10 @@ function search() {
     // TODO
     let searchWord = document.getElementById("searchText").value.trim();
 
+    if(!searchWord){
+        return;
+    }
+
     let listElements = document.querySelectorAll("#towns li");
     let resultElement = document.getElementById("result");
     let arr = Array.from(listElements);
@@ -13,10 +17,11 @@ function search() {
     } )
 
 
-    resultElement.textContent= arr.filter(e => e.textContent.includes(searchWord)).map(e => {
+    let result =  arr.filter(e => e.textContent.includes(searchWord)).map(e => {
         e.style.textDecoration = 'underline';
         e.style.fontWeight = 'bold';
     }).length;
+    resultElement.textContent= `${result} matches found`
     resultElement.style.display= 'inline';
 
     /*  for (const listElement of listElements) {
