@@ -6,7 +6,14 @@ function search() {
     let resultElement = document.getElementById("result");
     let arr = Array.from(listElements);
 
-    resultElement.textContent= arr.filter(e => e.textContent === searchWord).map(e => {
+    //reset previous result
+    arr.forEach(el=>{
+        el.style.fontWeight= 'normal';
+        el.style.textDecoration= 'none';
+    } )
+
+
+    resultElement.textContent= arr.filter(e => e.textContent.includes(searchWord)).map(e => {
         e.style.textDecoration = 'underline';
         e.style.fontWeight = 'bold';
     }).length;
