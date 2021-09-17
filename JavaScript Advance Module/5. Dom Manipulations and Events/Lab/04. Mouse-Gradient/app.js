@@ -10,7 +10,7 @@ function attachGradientEvents() {
         document.getElementById("result").textContent = percentage +"%";
     }
 
-    function mouseOut(event) {
+    function mouseOut() {
         document.getElementById("result").textContent ='';
 
     }
