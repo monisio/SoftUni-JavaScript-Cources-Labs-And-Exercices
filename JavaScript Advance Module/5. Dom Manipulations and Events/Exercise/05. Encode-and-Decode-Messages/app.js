@@ -6,8 +6,8 @@ function encodeAndDecodeMessages() {
     buttons[0].addEventListener("click", encodeAndSent);
     buttons[1].addEventListener("click", decodeAndRead);
 
-    function encodeAndSent(event) {
-        let divElement = event.currentTarget.parentElement;
+    function encodeAndSent() {
+
         let allTextAreas = document.getElementsByTagName("textarea");
         let textArea = allTextAreas[0];
         let recieverTextArea = allTextAreas[1];
