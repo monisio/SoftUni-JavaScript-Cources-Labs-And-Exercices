@@ -26,7 +26,8 @@ function solve() {
             //setName
             let nameP = document.createElement("p");
             nameP.textContent = item["name"];
-            let nameTd = document.createElement("td").appendChild(nameP);
+            let nameTd = document.createElement("td");
+            nameTd.appendChild(nameP);
             newTr.appendChild(nameTd);
             //let name = item["name"];
 
@@ -34,7 +35,8 @@ function solve() {
             //sePrice
             let priceP = document.createElement("p");
             priceP.textContent = item["price"];
-            let priceTd = document.createElement("td").appendChild(priceP);
+            let priceTd = document.createElement("td");
+            priceTd.appendChild(priceP);
             newTr.appendChild(priceTd);
             //let price = item["price"];
 
@@ -42,17 +44,22 @@ function solve() {
             //setDecFactor
             let decFactorP = document.createElement("p");
             decFactorP.textContent = item["decFactor"];
-            let decFactorTd = document.createElement("td").appendChild(decFactorP);
+            let decFactorTd = document.createElement("td");
+            decFactorTd.appendChild(decFactorP);
             newTr.appendChild(decFactorTd);
             //let decFactor = item["decFactor"];
 
 
             //setButtonElement
-            let test = document.querySelector("input[type='checkbox']").parentNode;
-            let button = test.cloneNode(true);
+            let test = document.querySelector("input[type='checkbox']");
+            test.disabled = false;
+            let tdOfButtonElement = test.parentElement;
+
+            let button = tdOfButtonElement.cloneNode(true);
+
             newTr.appendChild(button);
 
-            newTr.className=
+
             tBodyElement.appendChild(newTr);
 
 
