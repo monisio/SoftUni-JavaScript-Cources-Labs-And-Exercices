@@ -6,7 +6,7 @@ function solve(area, vol, input) {
     for (const inputToArrayElement of inputToArray) {
         let currentResult= {
             area:area.call(inputToArrayElement),
-            volume:volume.call(inputToArrayElement)
+            volume:vol.call(inputToArrayElement)
         }
 
         outputArray.push(currentResult);
