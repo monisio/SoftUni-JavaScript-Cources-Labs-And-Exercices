@@ -3,7 +3,7 @@ function filter(persons, criteria) {
     let personsAsArray = JSON.parse(persons);
     let [filterBy, data] = criteria.split("-");
 
-
+    // when non existing criteria is added code is still working example =>   "all" and "data"(due to missing split information) = undefined =>  e["all"] === data  => true and all entries are passing the filter
     personsAsArray.filter(e => e[filterBy] === data)
         .map((e, i) => console.log(`${i}. ${e.first_name} ${e.last_name} - ${e.email}`
             .trim()));
@@ -36,5 +36,5 @@ filter(`[{
     "email": "ev2@hostgator.com",
     "gender": "Male"
   }]`,
-    'last_name-Johnson'
+    'a'
 );
