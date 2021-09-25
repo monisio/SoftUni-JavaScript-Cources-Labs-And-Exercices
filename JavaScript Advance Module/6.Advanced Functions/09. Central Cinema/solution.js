@@ -12,7 +12,7 @@ function solve() {
         e.preventDefault();
         let [name, hall, ticketPrice] = Array.from(inputElements).map(e => e.value);
         Array.from(inputElements).map(e => e.value = "");
-        if (name==="" || hall==="" || ticketPrice==="" || !Number(ticketPrice)) {
+        if (name==="" || hall==="" || ticketPrice==="" || isNaN(Number(ticketPrice))) {
             return
         }
 
@@ -45,8 +45,10 @@ function solve() {
 
         function archiveMovie() {
 
-            let ticketInputValue = Number(inputElement.value);
-            if (!(ticketInputValue)|| ticketInputValue===0) {
+            let ticketInputValue = inputElement.value;
+            if (ticketInputValue===""|| isNaN(Number(ticketInputValue))) {
+
+
                 return;
             }
 
@@ -69,7 +71,7 @@ function solve() {
 
 
     function deleteArchivedItem(e) {
-        //e.preventDefault();
+
         e.currentTarget.parentElement.remove();
 
     }
