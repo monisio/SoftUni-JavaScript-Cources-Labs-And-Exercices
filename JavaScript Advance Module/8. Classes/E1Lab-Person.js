@@ -3,7 +3,7 @@
     constructor(firstName, lastName, age, email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = Number(age);
+        this.age = age;
         this.email = email;
     }
 
