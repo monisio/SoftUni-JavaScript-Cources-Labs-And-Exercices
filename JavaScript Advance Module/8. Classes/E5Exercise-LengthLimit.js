@@ -29,6 +29,7 @@ class Stringer {
             output= this.innerString;
         }
         return output;
+
     }
 }
 
