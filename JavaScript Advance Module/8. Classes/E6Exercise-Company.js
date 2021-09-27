@@ -29,7 +29,13 @@ class Company {
         let bestDepartment = Object.entries(this.departments).sort((a, b) => (b[1].reduce((acc, el) => acc + el, 0) / b[1].length) - (a[1].reduce((acc, el) => acc + el, 0) / a[1].length))[0];
         let averageSalary = bestDepartment[1].map(e => e.salary).reduce((acc, el) => acc + el, 0) / bestDepartment[1].length;
         let resultString = `Best Department is: ${bestDepartment[0]}\nAverage salary: ${averageSalary.toFixed(2)}\n`
-        bestDepartment[1].sort((a, b) => b.salary - a.salary).forEach(e => resultString += e.name + " " + e.salary + " " + e.position );
+        resultString += bestDepartment[1].sort((a, b) => {
+            if ((b.salary - a.salary) === 0) {
+              return a.name.localeCompare(b.name);
+            }else{
+                return b.salary-a.salary;
+            }
+        }).map(e => e.name + " " + e.salary + " " + e.position).join("\n");
 
         return resultString;
     }
