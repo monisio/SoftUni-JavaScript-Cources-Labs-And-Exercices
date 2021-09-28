@@ -30,7 +30,6 @@
               result= this.toString().substr(0,n-3)+"...";
             } else {
                 result = this.substr(0, indexOfLastSpace) + "...";
-               // result = result.substr(0, n <= result.length ? n : result.length);
             }
         }
         return result;
