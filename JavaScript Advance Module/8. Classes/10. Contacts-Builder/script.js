@@ -1,20 +1,20 @@
 class Contact {
 
     constructor(firstName, lastName, phone, email) {
-        this.contactElement =this.createContactElement(firstName, lastName, phone, email);
+        this.contactElement = this.createContactElement(firstName, lastName, phone, email);
         this.online = false;
+        Object.defineProperty(this, "online", {
+            set: (status) => {
+              // this.online.value.set(status);
+                if (status) {
+                    let current = document.getElementsByClassName("title")[0];
+                    current.className = "online";
+                }
+            },
+            get: () => {return true}
 
+        })
     }
-
-    set online(status) {
-        this.online=status;
-        if (this.online) {
-            let current = document.getElementsByClassName("title")[0];
-            current.className = "online";
-        }
-
-    }
-
 
 
     createContactElement(firstName, lastName, phone, email) {
@@ -66,7 +66,10 @@ function generateContacts() {
     ];
     contacts.forEach(c => c.render('main'));
 
-   setTimeout(() => contacts[1].online = true, 2000);
+   console.log( Object.getOwnPropertyDescriptors(contacts[0]));
+    setTimeout(() => contacts[1].online = true, 2000);
+
+
 }
 
 /*<article>
