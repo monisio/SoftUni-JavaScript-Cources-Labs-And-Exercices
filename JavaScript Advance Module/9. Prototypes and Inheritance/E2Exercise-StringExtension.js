@@ -10,42 +10,34 @@
         if (this.endsWith(str)) {
             return this.toString();
         } else {
-            return this + str;
+            return this.toString() + str;
         }
     }
 
     String.prototype.isEmpty = function () {
-        return this === "";
+        return this.toString() === "" && this.length === 0;
     }
 
     String.prototype.truncate = function (n) {
         let result = "";
         if (n < 4) {
-            for (let i = 0; i < n; i++) {
-                result = result + ".";
-            }
-        } else if (n > this.length) {
+            result = ".".repeat(n);
+        } else if (n >= this.toString().length) {
             result = this.toString();
-        } else if (n < this.length) {
-            let indexOfLastSpace = this.lastIndexOf(" ");
-            if(indexOfLastSpace<0){
-                for (let i = 0; i < n-3; i++) {
-                    result += this.charAt(i);
-                }
-                result+= "..."
-            }else {
-                result = this.substr(0,indexOfLastSpace ) + "...";
-                result = result.substr(0,n<=result.length? n:result.length);
+        } else if (n < this.toString().length) {
+            let indexOfLastSpace = this.toString().substr(0, n-2).lastIndexOf(" ");
+            if (indexOfLastSpace < 0) {
+              result= this.toString().substr(0,n-3)+"...";
+            } else {
+                result = this.substr(0, indexOfLastSpace) + "...";
+               // result = result.substr(0, n <= result.length ? n : result.length);
             }
-        } else {
-            result = this.substr(0, n) + "..."
-
         }
         return result;
     }
 
     String.format = function (string, ...params) {
-        let result = string.match(/\d/g);
+        let result = string.match(/\d+/g);
         result.forEach(num => string = string.replace(`{${num}}`, params[num] ? params[num] : `{${num}}`));
         return string;
 
