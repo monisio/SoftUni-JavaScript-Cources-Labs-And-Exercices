@@ -5,6 +5,7 @@ function solution() {
 
 
         constructor(name, age) {
+
             if (new.target === Employee) {
                 throw new Error("Cannot make instance of abstract class Employee.");
             }
@@ -50,6 +51,7 @@ function solution() {
                 "is taking time off work.",
                 "is supervising junior workers.",
             ];
+
         }
     }
 
