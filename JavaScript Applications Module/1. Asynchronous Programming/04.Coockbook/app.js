@@ -1,9 +1,6 @@
 function solution() {
     let mainElement = document.querySelector("main");
-    mainElement.addEventListener("click", (event) => {
-        event.target
 
-    })
 
     fetch("http://localhost:3030/jsonstore/cookbook/recipes")
         .then((response) => response.json())
