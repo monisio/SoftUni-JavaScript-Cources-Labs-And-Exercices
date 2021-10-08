@@ -2,10 +2,20 @@ function loadRepos() {
 
     let username = "https://api.github.com/users/" + document.getElementById("username").value + "/repos";
     let reposElement = document.getElementById("repos");
-    reposElement.removeChild(reposElement.children[0]);
+    for (let child of reposElement.children) {
+        child.remove();
+    }
+
 
     fetch(username)
-        .then((responce) => responce.json())
+        .then((responce) =>{
+           if(responce.status!== 200){
+               reposElement.textContent= "Error server response status : "+responce.status;
+           }else{
+
+               responce.json()
+           }
+        } )
         .then(data => {
 
             for (let i = 0; i < data.length; i++) {
@@ -17,6 +27,6 @@ function loadRepos() {
                 reposElement.appendChild(liNewElement);
             }
 
-        }).catch(error => reposElement.textContent = error.message);
+        }).catch(reject=> console.log(reject));
 
 }
