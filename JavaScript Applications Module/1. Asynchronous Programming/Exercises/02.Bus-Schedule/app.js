@@ -1,24 +1,35 @@
 function solve() {
-    let baseUrl = "http://localhost:3030/jsonstore/bus/schedule/";
-    let nextStopId = "depot";
+
+
     let departButton = document.getElementById("depart");
     let arriveButton = document.getElementById("arrive");
     let infoElement = document.querySelector("#info span");
 
     function depart() {
-        fetch(baseUrl + nextStopId).then(respond => respond.json())
+
+
+        let nextStopId = infoElement.getAttribute("data-next-stop-id") === null ? "depot" : infoElement.getAttribute("data-next-stop-id");
+
+        fetch(`http://localhost:3030/jsonstore/bus/schedule/${nextStopId}`).then(body => body.json())
             .then(busStop => {
-                infoElement.textContent = busStop.name
-                nextStopId = busStop.next;
-            });
-        departButton.disabled = "true";
-        arriveButton.disabled = "";
+                infoElement.setAttribute("data-next-stop-name", busStop.name);
+                infoElement.setAttribute("data-next-stop-id", busStop.next);
+                infoElement.textContent = `Next Stop ${busStop.name}`
+                departButton.disabled = true;
+                arriveButton.disabled = false;
+            }).catch(error => {
+            infoElement.textContent = "Error";
+            departButton.disabled = true;
+            arriveButton.disabled = true;
+        });
+
+
     }
 
     function arrive() {
-
-        departButton.disabled = "";
-        arriveButton.disabled = "true";
+        infoElement.textContent = `Arrived at ${infoElement.getAttribute("data-next-stop-name")}`
+        departButton.disabled = false;
+        arriveButton.disabled = true;
     }
 
     return {
