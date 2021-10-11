@@ -12,7 +12,7 @@ function solution() {
                 mainElement.appendChild(element);
             }
 
-        })
+        });
 
     function render(elementData) {
 
@@ -49,7 +49,7 @@ function solution() {
 
             let detailElement = renderDetails(resultObject);
             mainElement.appendChild(detailElement);
-        })
+        });
 
 
     }
