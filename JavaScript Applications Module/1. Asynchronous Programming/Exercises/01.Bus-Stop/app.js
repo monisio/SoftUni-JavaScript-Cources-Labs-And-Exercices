@@ -5,6 +5,7 @@ function getInfo() {
     let buses = document.getElementById("buses");
 
     fetch(baseUrl+inputNumber).then(responce=> {
+       Array.from(document.querySelectorAll("#buses div")).forEach(r=> r.remove())
         if (responce.status!==200){
             throw new Error("Error");
         }else{
