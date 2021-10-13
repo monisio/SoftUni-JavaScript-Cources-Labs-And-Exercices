@@ -1,7 +1,6 @@
 function attachEvents() {
 
 
-    let upcomingUrl = "http://localhost:3030/jsonstore/forecaster/upcoming/";
 
     document.getElementById("submit").addEventListener("click", () => {
         let userInputLocation = document.getElementById("location").value;
