@@ -21,8 +21,8 @@ function attachEvents() {
 
     async function createMessage() {
 
-        let authorInput = document.getElementById("author");
-        let contentInput = document.getElementById("content");
+        let authorInput = document.getElementsByName("author")[0];
+        let contentInput = document.getElementsByName("content")[0];
         let url = "http://localhost:3030/jsonstore/messenger";
 
         let newMessage = {
