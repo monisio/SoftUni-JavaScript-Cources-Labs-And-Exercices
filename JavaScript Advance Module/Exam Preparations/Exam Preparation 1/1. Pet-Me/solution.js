@@ -14,45 +14,55 @@ function solve() {
 
         Array.from(document.querySelectorAll("#container input")).forEach(e => e.value = "");
 
-        if (!nameInput ||Number.isNaN(ageInput) || !kindInput || !ownerInput) {
+        if (!nameInput || Number.isNaN(ageInput) || !kindInput || !ownerInput) {
             return;
         }
 
+       let contactButton= e("button",{}, "Contact Owner");
+        contactButton.addEventListener("click", contact);
 
-        let mainLiItem = document.createElement("li");
+        let newElement = e("li", {},
+            e("p",{},
+                   e("strong",{}, nameInput),
+                    "is a",
+                    e("strong", {}, ageInput),
+                    "year old",
+                    e("strong", {}, kindInput)
+            ),
+            e("span",{}, `Owner: ${ownerInput}`),
+            contactButton
+        )
 
-        let paragraphElement = document.createElement("p");
-
-        let nameStrong = document.createElement("strong");
-        nameStrong.textContent = nameInput;
-        paragraphElement.appendChild(nameStrong);
+        document.querySelector("#adoption ul").appendChild(newElement);
 
 
-        let ageStrong = document.createElement("strong");
-        ageStrong.textContent = ageInput;
-        paragraphElement.appendChild(ageStrong);
+    }
 
+    function contact(event){
+         event.currentTarget.textContent= "Yes, i take it!"
 
-        let kindStrong = document.createElement("strong");
-        kindStrong.textContent = kindInput;
-        paragraphElement.appendChild(kindStrong);
-        mainLiItem.appendChild(paragraphElement);
-
-        paragraphElement.textContent = ` is a year old `;
-
-        let spanOwnerElement = document.createElement("span");
-        spanOwnerElement.textContent = "Owner " + ownerInput;
-        mainLiItem.appendChild(spanOwnerElement);
-
-        let buttonElement = document.createElement("button");
-        buttonElement.textContent = "Contact with owner";
-
-        mainLiItem.appendChild(buttonElement);
-
-        document.querySelector("#adoption ul").appendChild(mainLiItem);
 
 
     }
 
 }
 
+
+
+function e(type, attr, ...content) {
+    const element = document.createElement(type);
+
+    for (let prop in attr) {
+        element[prop] = attr[prop];
+    }
+
+    for (let item of content) {
+        if (typeof item === "string" || typeof item === "number") {
+            item = document.createTextNode(item);
+        }
+
+        element.appendChild(item);
+    }
+
+    return element;
+}
