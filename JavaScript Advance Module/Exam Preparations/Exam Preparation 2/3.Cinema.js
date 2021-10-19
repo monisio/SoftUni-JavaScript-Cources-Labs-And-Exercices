@@ -1,3 +1,5 @@
+let expect = require("chai").expect;
+
 const cinema = {
     showMovies: function (movieArr) {
 
@@ -35,3 +37,54 @@ const cinema = {
 
     }
 };
+
+
+
+describe("Testing of Cinema class functionalities", () => {
+    //show movies:
+    //  empty array passed  - 'There are currently no movies to show.'
+    // normal array passed - string joined by ", ";
+    it("show movies message on empty array", () => {
+        expect(cinema.showMovies([])).to.equal("There are currently no movies to show.");
+    });
+
+    it("show movies message on valid array", () => {
+        expect(cinema.showMovies(["a", "b", "c", "d"])).to.equal("a, b, c, d");
+    });
+
+    //ticket price :
+//valid type passed - price
+//invalid type passed - 'Invalid projection type.'
+
+    it("ticket price message on valid input", () => {
+        expect(cinema.ticketPrice("Premiere")).to.equal(12.00);
+    });
+
+    it("ticket price message on invalid input", () => {
+        expect(()=>cinema.ticketPrice("Premi")).to.throw('Invalid projection type.');
+    });
+
+
+    //swap seats:
+//passed not integer/ passed seat number less tha 0 / passed seat number more than 20 / fist seat === second seat / - "Unsuccessful change of seats in the hall."
+// valid data passed - "Successful change of seats in the hall.";
+
+    /*•	swapSeatsInHall(firstPlace, secondPlace)- A function that accepts two numbers
+o	The function swaps the seat number in the cinema hall, when two numbers are submitted.
+o	The exchange is not successful and the function returns "Unsuccessful change of seats in the hall." :
+o	If one of the two numbers do not exist
+o	The numbers are not integers
+o	If one of the numbers is greater than the capacity of the hall – 20
+o	Seats are less or equal of 0
+o	Otherwise return: "Successful change of seats in the hall."
+o	There is a need for validation for the input
+*/
+    it("swap seats message on invalid input", () => {
+        expect(()=>cinema.swapSeatsInHall(undefine, 2)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+    it("swap seats price message on invalid input", () => {
+        expect(()=>cinema.swapSeatsInHall(undefine, 2)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+})
