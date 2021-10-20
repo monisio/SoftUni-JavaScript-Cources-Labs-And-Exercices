@@ -15,7 +15,7 @@ class Story {
         if (this._likes.length === 0) {
             output = `${this.title} has 0 likes`;
         } else if (this._likes.length === 1) {
-            //define likes-bind username !!!
+
             output = `${this._likes[0]} likes this story!`
         } else {
             output = `${this._likes[0]} and ${this._likes.length - 1} others like this story!`
@@ -25,18 +25,17 @@ class Story {
     }
 
     like(username) {
-        if (this._likes.some(e => e === username)) {
-            let errorMessage = "";
-            if (this.creator === username) {
-                errorMessage = "You can't like your own story!";
-            } else {
-                errorMessage = "You can't like the same story twice!";
-            }
-            throw new Error(errorMessage);
-        } else {
-            this._likes.push(username);
+        if (this._likes.includes(username)) {
+            throw new Error("You can't like the same story twice!");
         }
+
+        if (username === this.creator) {
+            throw new Error("You can't like your own story!");
+        }
+
+        this._likes.push(username);
         return `${username} liked ${this.title}!`
+
     }
 
     dislike(username) {
@@ -53,7 +52,7 @@ class Story {
 
     comment(username, content, id) {
         let output = "";
-        let existingComment = this._comments.find(c=> c.id === id);
+        let existingComment = this._comments.find(c => c.id === id);
         if (!existingComment) {
             this._comments.push({
                 username: username,
@@ -92,13 +91,12 @@ class Story {
         result.push(`Title: ${this.title}`);
         result.push(`Creator: ${this.creator}`);
         result.push(`Likes: ${this._likes.length}`);
-        result.push("Comments:")
-        if(this._comments.length>0){
-            this._comments.sort((a, b) => sortingTypes[sortingType](a, b)).forEach(c => {
-                result.push(`-- ${c.id}. ${c.username}: ${c.content}`)
-                c.replies.sort((a, b) => sortingTypes[sortingType](a, b)).forEach(r => result.push(`--- ${r.id}. ${r.username}: ${r.content}`))
-            })
-        }
+        result.push("Comments:");
+
+        this._comments.sort((a, b) => sortingTypes[sortingType](a, b)).forEach(c => {
+            result.push(`-- ${c.id}. ${c.username}: ${c.content}`)
+            c.replies.sort((a, b) => sortingTypes[sortingType](a, b)).forEach(r => result.push(`--- ${r.id}. ${r.username}: ${r.content}`))
+        })
 
 
         return result.join("\n");
