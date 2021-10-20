@@ -60,6 +60,15 @@ describe("Testing of Cinema class functionalities", () => {
         expect(cinema.ticketPrice("Premiere")).to.equal(12.00);
     });
 
+    it("ticket price message on valid input", () => {
+        expect(cinema.ticketPrice("Normal")).to.equal(7.50);
+    });
+
+    it("ticket price message on valid input", () => {
+        expect(cinema.ticketPrice("Discount")).to.equal(5.50);
+    });
+
+
     it("ticket price message on invalid input", () => {
         expect(()=>cinema.ticketPrice("Premi")).to.throw('Invalid projection type.');
     });
@@ -79,12 +88,62 @@ o	Seats are less or equal of 0
 o	Otherwise return: "Successful change of seats in the hall."
 o	There is a need for validation for the input
 */
-    it("swap seats message on invalid input", () => {
-        expect(()=>cinema.swapSeatsInHall(undefine, 2)).to.equal("Unsuccessful change of seats in the hall.");
+
+    it("swap seats message not integer passed ", () => {
+        expect(cinema.swapSeatsInHall("string",20)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+    it("swap seats message on undefined input 1", () => {
+        expect(cinema.swapSeatsInHall(undefined, 2)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+    it("swap seats message on 1 input", () => {
+        expect(cinema.swapSeatsInHall(2)).to.equal("Unsuccessful change of seats in the hall.");
     });
 
-    it("swap seats price message on invalid input", () => {
-        expect(()=>cinema.swapSeatsInHall(undefine, 2)).to.equal("Unsuccessful change of seats in the hall.");
+    it("swap seats price message on undefined input 2", () => {
+        expect(cinema.swapSeatsInHall( 2,undefined)).to.equal("Unsuccessful change of seats in the hall.");
     });
+    it("swap seats price message non integer input 1", () => {
+        expect(cinema.swapSeatsInHall( 2.22,4)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+    it("swap seats price message non integer input 2", () => {
+        expect(cinema.swapSeatsInHall( 4 ,2.22)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+
+    it("swap seats price message  input 1 greater than 20", () => {
+        expect(cinema.swapSeatsInHall( 21 ,1)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+    it("swap seats price message  input 2 greater than 20", () => {
+        expect(cinema.swapSeatsInHall( 1 ,21)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+    it("swap seats price message  input 1 equal 0", () => {
+        expect(cinema.swapSeatsInHall( 0 ,20)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+    it("swap seats price message  input 2 equal 0", () => {
+        expect(cinema.swapSeatsInHall( 20 ,0)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+    it("swap seats price message  input 1 negative number", () => {
+        expect(cinema.swapSeatsInHall( -1 ,20)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+    it("swap seats price message  input 2 negative number", () => {
+        expect(cinema.swapSeatsInHall( 20 ,-1)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
+    it("swap seats price message success", () => {
+        expect(cinema.swapSeatsInHall( 20 ,1)).to.equal("Successful change of seats in the hall.");
+    });
+
+    it("swap seats price message success", () => {
+        expect(cinema.swapSeatsInHall( 5 ,4)).to.equal("Successful change of seats in the hall.");
+    });
+
+    it("swap seats same seat passed ", () => {
+        expect(cinema.swapSeatsInHall(20,20)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
 
 })
