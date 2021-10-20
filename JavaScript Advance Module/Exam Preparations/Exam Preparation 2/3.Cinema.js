@@ -92,6 +92,10 @@ o	There is a need for validation for the input
     it("swap seats message not integer passed ", () => {
         expect(cinema.swapSeatsInHall("string",20)).to.equal("Unsuccessful change of seats in the hall.");
     });
+
+    it("swap seats message not integer passed ", () => {
+        expect(cinema.swapSeatsInHall(20,"string")).to.equal("Unsuccessful change of seats in the hall.");
+    });
     it("swap seats message on undefined input 1", () => {
         expect(cinema.swapSeatsInHall(undefined, 2)).to.equal("Unsuccessful change of seats in the hall.");
     });
@@ -137,6 +141,10 @@ o	There is a need for validation for the input
         expect(cinema.swapSeatsInHall( 20 ,1)).to.equal("Successful change of seats in the hall.");
     });
 
+    it("swap seats message on correct data passed ", () => {
+        expect(cinema.swapSeatsInHall(1,20)).to.equal("Successful change of seats in the hall.");
+    });
+
     it("swap seats price message success", () => {
         expect(cinema.swapSeatsInHall( 5 ,4)).to.equal("Successful change of seats in the hall.");
     });
@@ -144,6 +152,11 @@ o	There is a need for validation for the input
     it("swap seats same seat passed ", () => {
         expect(cinema.swapSeatsInHall(20,20)).to.equal("Unsuccessful change of seats in the hall.");
     });
+
+    it("swap seats same seat passed ", () => {
+        expect(cinema.swapSeatsInHall(20,20)).to.equal("Unsuccessful change of seats in the hall.");
+    });
+
 
 
 })
