@@ -1,0 +1,35 @@
+1. Extract project skeleton and examine files.
+2. Setup NPM project (package.json + libraries).
+3. Analyze the HTML and determine templates.
+4. Configure routing with placeholder modules.
+5. Implement requests.
+6. Implement each view.
+
+
+
+page accepts View function
+
+View modules :
+- fetch data  - separate and universal function for requests to server
+- interpolate template
+- handle user input
+- return generated html
+
+Render module : - creates one place where render function is called instead of multiple.
+- takes view function result
+- receives render context (where to place rendered result)
+
+
+Request  module : - inside api folder of src
+- get function
+- post function
+- delete function
+- edit function
+- login
+- logout
+- register
+
+
+
+Data module : imports Request module function and view functions (decouples api from view controllers in case that we decide to change api );
+
