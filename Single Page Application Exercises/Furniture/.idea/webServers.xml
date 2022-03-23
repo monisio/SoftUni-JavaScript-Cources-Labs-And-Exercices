@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c17229a4-9d9b-4fe5-b042-8b624a6d8f16" name="furni" url="http://localhost">
+        <fileTransfer mountedRoot="C:\Users\35988\WebstormProjects\Furniture" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
